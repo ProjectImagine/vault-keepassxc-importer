@@ -9,9 +9,10 @@ from vault_importer.vault import Vault
 def args():
     p = argparse.ArgumentParser(description='Import a KeepassXC CSV into Hashicorp Vault.')
     p.add_argument('--csv', required=True, help='Location of the CSV file.')
-    p.add_argument('--base', default='linux_vault', help='Base path of your secrets in the vault.')
-    p.add_argument('--url', default='https://vault.example.com:8200',
-                   help='URL of the Vault. Include the port.')
+    p.add_argument('--base', default='secret', help='Base path of your secrets in the vault.')
+    p.add_argument('--url', default='http://localhost:8200',
+                   help='URL of the Vault. Include the port.'),
+    p.add_argument('--token', default='root', help='Vault login token')
     return p.parse_args()
 
 
@@ -26,9 +27,8 @@ def main():
     except Exception as e:
         print('Error: {0}.'.format(e))
         return 2
-    root_token = getpass.getpass('Please provide a Vault token with sufficient privileges: ')
     try:
-        v = Vault(root_token=root_token, base_path=a.base, base_url=a.url)
+        v = Vault(root_token=a.token, base_path=a.base, base_url=a.url)
         v_result = v.add(secrets=secrets)
     except Exception as e:
         print('Error: {0}.'.format(e))
