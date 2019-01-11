@@ -1,6 +1,6 @@
 # vault-importer
 
-A simple script designed to CSV exports into Hashicorp Vault
+A script designed to CSV exports into Hashicorp Vault KV use V2 API
 
 CSV example:
 "some/path","KeyName","SomeValue"
@@ -17,6 +17,3 @@ vault_import
 
 ## Installation
 Execute `python3 setup.py install --user` to install.
-
-## TODO:
-V2 API

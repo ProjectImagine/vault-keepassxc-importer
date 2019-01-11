@@ -29,13 +29,13 @@ class Vault:
         return True
 
     def __request(self, secret):
-        data = {
+        data = { 'data' : {
             secret['service']: secret['value']
+         }
         }
-        url = urljoin(self.vault_address, '/'.join(['v1', self.base, secret['path']]))
+        url = urljoin(self.vault_address, '/'.join(['v1', self.base , '/data/', secret['path']]))
         headers = {
-            'X-Vault-Token': self.root,
-            'Content-Type': 'application/json'
+            'X-Vault-Token': self.root
         }
         r = requests.post(url, data=json.dumps(data), headers=headers, verify=self.ssl_verify)
         r.raise_for_status()
