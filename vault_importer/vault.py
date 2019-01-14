@@ -30,10 +30,11 @@ class Vault:
 
     def __request(self, secret):
         data = { 'data' : {
-            secret['service']: secret['value']
-         }
+                            "value": secret['value']
+                          }
         }
-        url = urljoin(self.vault_address, '/'.join(['v1', self.base , '/data/', secret['path']]))
+        #print (json.dumps(data))
+        url = urljoin(self.vault_address, '/'.join(['v1', self.base , '/data/', secret['path'], '/', secret['service']]))
         headers = {
             'X-Vault-Token': self.root
         }
