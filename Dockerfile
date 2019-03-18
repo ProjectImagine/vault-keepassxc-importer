@@ -1,5 +1,7 @@
 FROM alpine:3.9
 
+ADD . /root/app
+
 WORKDIR /root/app
 
 RUN apk add --no-cache python3 && \
