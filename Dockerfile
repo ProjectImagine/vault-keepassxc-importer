@@ -1,6 +1,6 @@
 FROM alpine:3.9
 
-RUN apk add --no-cache python3 && \
+RUN apk add --no-cache python3 \
     cd /root \
     python3 setup.py install
 
