@@ -36,5 +36,6 @@ RUN apk add --no-cache python3 && \
     python3 setup.py install
 
 
-CMD aws s3api get-object --bucket $VAULT_DATA_BUCKET --key $VAULT_DATA_FILE /tmp/kv.csv && vault_import --csv /tmp/kv.csv --base kv --url $VAULT_ADDR --token $TOKEN && \
+#CMD aws s3api get-object --bucket $VAULT_DATA_BUCKET --key $VAULT_DATA_FILE /tmp/kv.csv && vault_import --csv /tmp/kv.csv --base kv --url $VAULT_ADDR --token $TOKEN && \
+CMD vault_import --csv /tmp/kv.csv --base kv --url $VAULT_ADDR --token $TOKEN && \
     echo "Exit code $?"
