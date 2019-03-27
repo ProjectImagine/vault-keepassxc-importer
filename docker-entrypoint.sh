@@ -1,10 +1,10 @@
 #!/bin/bash
 #set -e
 
-if [ -f ./kv.csv ] 
+if [ -f ./tmp/kv.csv ] 
 then
     echo "File exists locally"
-    if [ -s ./kv.csv ]
+    if [ -s ./tmp/kv.csv ]
     then
        echo "Skipping downloading kv file from S3"
     else
