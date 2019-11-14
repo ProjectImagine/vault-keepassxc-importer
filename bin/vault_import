@@ -28,7 +28,7 @@ def main():
         print('Error: {0}.'.format(e))
         return 2
     try:
-        v = Vault(root_token=a.token, base_path=a.base, base_url=a.url)
+        v = Vault(root_token=a.token, base_path=a.base, base_url=a.url, ssl_verify=False)
         v_result = v.add(secrets=secrets)
     except Exception as e:
         print('Error: {0}.'.format(e))
